@@ -12,6 +12,48 @@ title{
 div{
         color: black;
 }
+
+
+
+/** HEADER **/
+#header-nav {
+  background-color: #f6b319;
+  border-radius: 0;
+  border: 0;
+}
+html{
+        margin: 0px 50px 10px 50px ;
+        padding: 10px;
+        
+}
 body {
   background-color: #fff;
+}
+body {
+  font-size: 16px;
+  color: #fff;
+
+}
+a:hover {
+    color: red;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus {
+  background-image: url(texturebg.png);
+}
+.navbar {
+    position: relative;
+    min-height: 60px;
+    background-image: url(texturebg.png);
+   border: 1px solid transparent;
+}
+.content {
+    max-width: 1000px;
+}
+
+div, span{
+        font-family: "News Cycle", "Arial Narrow Bold", sans-serif;;
+}
+botton .bin .btn-primary{
+        background-color:#0000ff;
 }

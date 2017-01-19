@@ -11,19 +11,22 @@ library(shiny)
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(theme = "bootstrap.css",
-               
+              titlePanel("ANN  Exchange Rate Predictor"),
   # Application title
-  navbarPage("ANN  Predictor",
+  navbarPage("",
              header = tags$head(tags$link(rel = "stylesheet", 
                                           type = "text/css", href = "style.css")),
              tabPanel("Exchange Rate Predictor",
                       fluidRow(
-                              column(6,
-                                     sliderInput("obs", "Number of observations:",
-                                                 min = 1, max = 1000, value = 500)
+                              column(3,
+                                     titlePanel("Input"),
+                                     textInput("dayOne", "Enter First Day Input Data:",placeholder = "3.30"),
+                                     textInput("dayTwo", "Enter Second Day Input Data:", placeholder = "3.25"),
+                                     textInput("dayThree", "Enter Third Day Input Data:", placeholder = "3.23"),
+                                     submitButton("Predict")
                               ),
                               column(6,
-                                     plotOutput("distPlot")
+                                     plotOutput("")
                               )
                               
                               
@@ -62,7 +65,15 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                     value = T),   
                       checkboxInput("showModel2", "Show/Hide Model 2", value = T),
                       submitButton("Submit")
-                      )
+                      ),
+             tabPanel("About Me " ,
+                      sliderInput("slideMGP", "Enter MPG",
+                                  10,35, value = 20),
+                      checkboxInput("showModel1","Show/Hide Model 1",
+                                    value = T),   
+                      checkboxInput("showModel2", "Show/Hide Model 2", value = T),
+                      submitButton("Submit")
+             )
   )
   
              

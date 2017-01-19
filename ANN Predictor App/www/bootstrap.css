@@ -3997,8 +3997,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li.disabled > a {
   color: #999999;
 }
-.nav > li.disabled > a:hover,
-.nav > li.disabled > a:focus {
+.nav > li.disabled > a:hover{
   color: #999999;
   text-decoration: none;
   background-color: transparent;
