@@ -18,7 +18,9 @@ shinyUI(fluidPage(theme = "bootstrap.css",
   navbarPage("",
              header = tags$head(tags$link(rel = "stylesheet", 
                                           type = "text/css", href = "style.css")),
+             
              tabPanel("Exchange Rate Predictor",
+                      h4("Note: For the first time tester, please refer to the How To Use page") ,
                       fluidRow(
                               column(4,
                                      titlePanel(" Currency:"),
@@ -39,20 +41,19 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                               
                               column(4,
                                      titlePanel("Inputs:"),
-                                     textInput("dayOne", "Enter First Day Input Data:",placeholder = "3.30"),
-                                     textInput("dayTwo", "Enter Second Day Input Data:", placeholder = "3.25"),
-                                     textInput("dayThree", "Enter Third Day Input Data:", placeholder = "3.23"),
-                                     textInput("dayFour", "Enter Fourth Day Input Data:", placeholder = "3.23"),
-                                     textInput("dayFive", "Enter Fifth Day Input Data:", placeholder = "3.23")
+                                     textInput("dayOne", "Enter First Day Input Data:", value = c(3.50), placeholder = "3.30"),
+                                     textInput("dayTwo", "Enter Second Day Input Data:", value = c(3.50),placeholder = "3.25"),
+                                     textInput("dayThree", "Enter Third Day Input Data:", value = c(3.50),placeholder = "3.23")
+                                     #textInput("dayFour", "Enter Fourth Day Input Data:", placeholder = "3.23")
+                                     
                                      
                               ),
                               column(4,
                                     
                                      titlePanel("Results:"),
-                                     h3("Homogeneous Model"),
-                                     textOutput("result1"),
-                                     h3("Heterogeneous Model"),
+                                     h3("Predicted Tomorrow exchange rate is:"),
                                      textOutput("result1")
+                                    
                               )
                               
                               
@@ -64,47 +65,27 @@ shinyUI(fluidPage(theme = "bootstrap.css",
              tabPanel("Project Description",
 
                       fluidRow(
-                              column(6,
-                                     
-                                     sliderInput("slideMGP", "Enter MPG",
-                                                 10,35, value = 20),
-                                     checkboxInput("showModel1","Show/Hide Model 1",
-                                                   value = T),   
-                                     checkboxInput("showModel2", "Show/Hide Model 2", value = T),
-                                     submitButton("Submit")
-                              ),
-                              column(6,
-                                     plotOutput("plot1"),
-                                     h3("Predict Horsepower from Model 1: "),
-                                     textOutput("pred1"),
-                                     h3("Predicted Horsepower from Model 2:"),
-                                     textOutput("pred2")
-                              )
-                              
-                              
-                      )
-                      ),
-             tabPanel("How to Use " ,
-                      sliderInput("slideMGP", "Enter MPG",
-                                  10,35, value = 20),
-                      checkboxInput("showModel1","Show/Hide Model 1",
-                                    value = T),   
-                      checkboxInput("showModel2", "Show/Hide Model 2", value = T),
-                      submitButton("Submit")
-                      ),
-             tabPanel("About Me " ,
-                      sliderInput("slideMGP", "Enter MPG",
-                                  10,35, value = 20),
-                      checkboxInput("showModel1","Show/Hide Model 1",
-                                    value = T),   
-                      checkboxInput("showModel2", "Show/Hide Model 2", value = T),
-                      submitButton("Submit")
-             )
-  )
-  
+                              column(12,
+                                     textOutput("")
+                      ))),
              
-
+             tabPanel("How to Use " ,
+                      
+                      fluidRow(
+                              column(12,
+                                     textOutput("")
+                              ))),
+             
+             tabPanel("About Me " ,
+                      
+                      fluidRow(
+                              column(12,
+                                     textOutput("")
+                              )))
+            
+  ))
+             
+)
 
   # Sidebar with a slider input for number of bins 
 
-))

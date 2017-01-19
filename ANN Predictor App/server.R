@@ -11,46 +11,48 @@ library(shiny)
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
-      output$distPlot <- renderPlot({
-                hist(rnorm(input$obs))
-        })
+        source("./libraries.R")
+        source("./functions.R")
+        
+        predictor_order <- 3
+        row_select <- 1
+       
       
-      mtcars$mpgsp <- ifelse(mtcars$mpg - 20 > 0, mtcars$mpg -20, 0)
-      model1 <- lm(hp~mpg, data = mtcars)
-      model2 <- lm(hp~mpgsp + mpg, data = mtcars)
-      
-      model1pred <- reactive({
-              mpgInput <- input$slideMGP
-              predict(model1, newdata = data.frame(mpg = mpgInput))
-      })
-      
-      model2pred <- reactive({
-              mpgInput <- input$slideMGP
-              predict(model2, newdata = data.frame(mpg = mpgInput,
-                                                   mpgsp = ifelse(mpgInput -20 > 0, mpgInput-20,0)))
-      })
-      
-      output$plot1 <- renderPlot({
-              mpgInput <- input$slideMGP
+        test_result <- reactive({
+                if(input$currency=="USD" && input$model=="HOMO"){
+                        homo_model1 <- Result_USD_HOMO_LIST[[row_select]][[5]][[6]][[1]]   
+                        homo_model2 <- Result_USD_HOMO_LIST[[row_select]][[5]][[6]][[2]]   
+                        homo_model3 <- Result_USD_HOMO_LIST[[row_select]][[5]][[6]][[3]] 
+                        usd_non_normalize <- data_set[[1]][[predictor_order - 2]][[6]] 
+                        
+                        value1 <- as.numeric(input$dayOne)
+                        value2 <- as.numeric(input$dayTwo)
+                        value3 <- as.numeric(input$dayThree)
+                        
+                        firstDay <- denormalized(value1,usd_non_normalize)
+                        secondDay <- denormalized(value2,usd_non_normalize)
+                        thirdDay <- denormalized(value3,usd_non_normalize)
+                        
+                        test <- cbind(firstDay,secondDay,thirdDay)
+                        
+                        model_results <- neuralnet::compute(homo_model1, test)
+                        predicted_oneDayhead <- denormalized(model_results$net.result,usd_non_normalize)
+                        
+                        model_results2 <- neuralnet::compute(homo_model2, test)
+                        predicted_oneDayhead2 <- denormalized(model_results2$net.result,usd_non_normalize)
+                        
+                        model_results3 <- neuralnet::compute(homo_model3, test)
+                        predicted_oneDayhead3 <- denormalized(model_results3$net.result,usd_non_normalize)
+                        
+                        
+                        max(predicted_oneDayhead,predicted_oneDayhead2,predicted_oneDayhead3)
+                }
               
-              plot(mtcars$mpg, mtcars$hp , xlab = "Miles Per Gallon",
-                   ylab = "Horsepower", bty = "n", pch=16,
-                   xlim = c(10,35), ylim = c(50,350))
-              if(input$showModel1){
-                      abline(model1, col='red', lwd = 2)
-              }
-              if(input$showModel2){
-                      model2Lines <- predict(model2, newdata = data.frame(
-                              mpg= 10:35, mpgsp = ifelse(10:35 -20 > 0, 10:35 -20, 0)
-                      ))
-                      lines(10:35, model2Lines, col = "blue", lwd = 2)
-              }    
-              legend(25,250, c("Model 1 Prediction", "Model 2 Prediction"), 
-                     pch = 16, col = c("red","blue"), bty = "n", cex = 1.2)
-              points(mpgInput, model1pred(), col = "red", pch = 16, cex = 2)
-              points(mpgInput, model2pred(), col = "blue", pch = 16, cex = 2)
-      
-  
-})
-      
+                
+              
+      })
+        
+        output$result1 <- renderText({
+                test_result()
+        })
 })
