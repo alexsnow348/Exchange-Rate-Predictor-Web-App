@@ -1,21 +1,43 @@
 @import url("//fonts.googleapis.com/css?family=Lobster|Cabin:400,700");
 
 h1 {
-  font-family: 'Lobster', cursive;
+  font-family: "News Cycle", "Arial Narrow Bold", sans-serif;
   font-weight: 500;
   line-height: 1.1;
-  color: #ad1d28;
+  color: #428bca;
+}
+h2{
+   font-family: "News Cycle", "Arial Narrow Bold", sans-serif;
+   font-size: 30px;
+  font-weight: 50;
+  line-height: 1.1;
+  color: #428bca;     
+}
+h3{
+   font-family: "News Cycle", "Arial Narrow Bold", sans-serif;
+  font-weight: 50;
+  font-size: 21px;
+  line-height: 1.1;
+  color: #428bca;     
+}
+.radio span {
+        font-family: "News Cycle", "Arial Narrow Bold", sans-serif;
+  font-weight: 50;
+  line-height: 1.1;
+  color: #000000
 }
 title{
-        background-color: #d3d3d3;
+        background-color: #428bca;
 }
 div{
         color: black;
 }
+li .active {
+    color:white;
+}
 
 
 
-/** HEADER **/
 #header-nav {
   background-color: #f6b319;
   border-radius: 0;
@@ -28,6 +50,9 @@ html{
 }
 body {
   background-color: #fff;
+  font-weight: 100;
+  line-height: 1.1;
+  font-family: "News Cycle", "Arial Narrow Bold", sans-serif;
 }
 body {
   font-size: 16px;
@@ -38,8 +63,11 @@ a:hover {
     color: red;
 }
 .navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:focus {
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav>li>a 
+{
   background-image: url(texturebg.png);
+  color:white;
 }
 .navbar {
     position: relative;

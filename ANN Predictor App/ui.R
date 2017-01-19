@@ -6,6 +6,8 @@
 # 
 #    http://shiny.rstudio.com/
 #
+#library(rsconnect)
+#rsconnect::deployApp('~/Desktop/FYP_WEP_APP/ANN Predictor App')
 
 library(shiny)
 
@@ -18,15 +20,39 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                           type = "text/css", href = "style.css")),
              tabPanel("Exchange Rate Predictor",
                       fluidRow(
-                              column(3,
-                                     titlePanel("Input"),
+                              column(4,
+                                     titlePanel(" Currency:"),
+                                    radioButtons("currency", "",
+                                                 c("Malaysian Ringgit to U.S Dollar" = "USD",
+                                                   "Malaysian Ringgit to British Pound" = "GBP",
+                                                   "Malaysian Ringgit to Euro" = "EURO",
+                                                   "Malaysian Ringgit to Swiss Franc" = "CHF",
+                                                   "Malaysian Ringgit to Australian Dollar " = "AUD",
+                                                   "Malaysian Ringgit to Canadian Dollar" = "CAD",
+                                                   "Malaysian Ringgit to Singapore Dollar" = "SGD")),
+                                    titlePanel("Prediction Model:"),
+                                    radioButtons("model", "",
+                                                 c("Homogeneous Model" = "HOMO",
+                                                   "Hetrogeneous Model" = "HETRO")),
+                                    submitButton("Predict")
+                                    ),
+                              
+                              column(4,
+                                     titlePanel("Inputs:"),
                                      textInput("dayOne", "Enter First Day Input Data:",placeholder = "3.30"),
                                      textInput("dayTwo", "Enter Second Day Input Data:", placeholder = "3.25"),
                                      textInput("dayThree", "Enter Third Day Input Data:", placeholder = "3.23"),
-                                     submitButton("Predict")
+                                     textInput("dayFour", "Enter Fourth Day Input Data:", placeholder = "3.23"),
+                                     textInput("dayFive", "Enter Fifth Day Input Data:", placeholder = "3.23")
+                                     
                               ),
-                              column(6,
-                                     plotOutput("")
+                              column(4,
+                                    
+                                     titlePanel("Results:"),
+                                     h3("Homogeneous Model"),
+                                     textOutput("result1"),
+                                     h3("Heterogeneous Model"),
+                                     textOutput("result1")
                               )
                               
                               
