@@ -13,12 +13,13 @@ library(shiny)
 shinyServer(function(input, output) {
         source("./libraries.R")
         source("./functions.R")
-        
+        load("./.RData")
         predictor_order <- 3
         row_select <- 1
        
       
-        test_result <- reactive({
+        output$result1 <- renderText({
+                
                 if(input$currency=="USD" && input$model=="HOMO"){
                         homo_model1 <- Result_USD_HOMO_LIST[[row_select]][[5]][[6]][[1]]   
                         homo_model2 <- Result_USD_HOMO_LIST[[row_select]][[5]][[6]][[2]]   
@@ -46,13 +47,11 @@ shinyServer(function(input, output) {
                         
                         
                         max(predicted_oneDayhead,predicted_oneDayhead2,predicted_oneDayhead3)
+                        
+                       
                 }
-              
-                
               
       })
         
-        output$result1 <- renderText({
-                test_result()
-        })
+        
 })
