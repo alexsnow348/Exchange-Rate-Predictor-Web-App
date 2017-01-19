@@ -11,23 +11,33 @@ library(shiny)
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
-  
-  # Application title
-  titlePanel("Old Faithful Geyser Data"),
-  
-  # Sidebar with a slider input for number of bins 
-  sidebarLayout(
-    sidebarPanel(
-       sliderInput("bins",
-                   "Number of bins:",
-                   min = 1,
-                   max = 50,
-                   value = 30)
-    ),
-    
-    # Show a plot of the generated distribution
-    mainPanel(
-       plotOutput("distPlot")
-    )
-  )
+        
+        # Application title
+        titlePanel("Plot Random Numbers"),
+        
+        # Sidebar with a slider input for number of bins 
+        sidebarLayout(
+                sidebarPanel(
+                        numericInput("numeric","How many Random Numnber should be plotted?",
+                                     value = 1000, min = 1, max = 1000, step = 1),
+                        sliderInput("sliderX", "Pick Min and Max X values",
+                                    -100,100, value = c(-50,50)),
+                        
+                        sliderInput("sliderY", "Pick Min and Max X values",
+                                    -100,100, value = c(-50,50)),
+                        checkboxInput("show_xlab","Show/Hide X Axis Label",
+                                      value = T),
+                        checkboxInput("show_ylab","Show/Hide Y Axis Label",
+                                      value = T),   
+                        checkboxInput("show_title", "Show/Hide Title")
+                        
+                ),
+                
+                # Show a plot of the generated distribution
+                mainPanel(
+                        h3("Graph of Random Points"),
+                        plotOutput("plot1")
+                        
+                )
+        )
 ))
