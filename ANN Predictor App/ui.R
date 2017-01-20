@@ -41,9 +41,9 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                               
                               column(4,
                                      titlePanel("Inputs:"),
-                                     textInput("dayOne", "Enter First Day Input Data:", value = c(3.50), placeholder = "3.30"),
-                                     textInput("dayTwo", "Enter Second Day Input Data:", value = c(3.50),placeholder = "3.25"),
-                                     textInput("dayThree", "Enter Third Day Input Data:", value = c(3.50),placeholder = "3.23")
+                                     textInput("dayOne", "Enter First Day Input Data:",  placeholder = "3.30"),
+                                     textInput("dayTwo", "Enter Second Day Input Data:", placeholder = "3.25"),
+                                     textInput("dayThree", "Enter Third Day Input Data:", placeholder = "3.23")
                                      #textInput("dayFour", "Enter Fourth Day Input Data:", placeholder = "3.23")
                                      
                                      
@@ -53,7 +53,7 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                      titlePanel("Results:"),
                                      h3("Predicted Tomorrow exchange rate is:"),
                                      textOutput("result1")
-                                    
+                                     
                               )
                               
                               
