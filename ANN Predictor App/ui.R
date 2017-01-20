@@ -25,13 +25,13 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                               column(4,
                                      titlePanel(" Currency:"),
                                     radioButtons("currency", "",
-                                                 c("Malaysian Ringgit to U.S Dollar" = "USD",
-                                                   "Malaysian Ringgit to British Pound" = "GBP",
-                                                   "Malaysian Ringgit to Euro" = "EURO",
-                                                   "Malaysian Ringgit to Swiss Franc" = "CHF",
-                                                   "Malaysian Ringgit to Australian Dollar " = "AUD",
-                                                   "Malaysian Ringgit to Canadian Dollar" = "CAD",
-                                                   "Malaysian Ringgit to Singapore Dollar" = "SGD")),
+                                                 c("U.S Dollar to Malaysian Ringgit " = "USD",
+                                                   "British Pound to Malaysian Ringgit" = "GBP",
+                                                   "Euro to Malaysian Ringgit" = "EURO",
+                                                   "Swiss Franc to Malaysian Ringgit" = "CHF",
+                                                   "Australian Dollar to Malaysian Ringgit " = "AUD",
+                                                   "Canadian Dollar to Malaysian Ringgit" = "CAD",
+                                                   "Singapore Dollar to Malaysian Ringgit" = "SGD")),
                                     titlePanel("Prediction Model:"),
                                     radioButtons("model", "",
                                                  c("Homogeneous Model" = "HOMO",
@@ -51,7 +51,8 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                               column(4,
                                     
                                      titlePanel("Results:"),
-                                     h3("Predicted Tomorrow exchange rate is:"),
+                                     h3("Predicted Next Day Exchange Rate:"),
+                                     tags$span("RM "),
                                      textOutput("result1")
                                      
                               )
@@ -66,21 +67,77 @@ shinyUI(fluidPage(theme = "bootstrap.css",
 
                       fluidRow(
                               column(12,
-                                     textOutput("")
+                                     tags$h3("For now, Please visit the presentation slide of the project."),
+                                    tags$a(href="https://docs.google.com/presentation/d/1m9pZClslKSyQQ-nwjuojCsFIyv21bJ6UiRBnUwra83w/edit?usp=sharing", 
+                                           tags$strong("Here!"))
+                                   
                       ))),
              
              tabPanel("How to Use " ,
                       
                       fluidRow(
-                              column(12,
-                                     textOutput("")
-                              ))),
+                              column(4,
+                                     tags$strong(
+                                             helpText("Testing Phase: Please use ONLY USD Dataset for now")
+                                     ),
+                                     tags$h1(""),
+                                     tags$h2("Steps:"),
+                                     tags$h1(""),
+                                     
+                                     
+                                     tags$ol(
+                                             tags$strong(
+                                                     tags$li("Select the Currency for Prediction."), 
+                                                     tags$p(""),
+                                                     tags$li("Select the Model."), 
+                                                     tags$p(""),
+                                                     tags$li("Please Enter the inputs by referring test dataset."),
+                                                     tags$p(""),
+                                                     tags$li("Click Predict Button.")
+                                                     
+                                                     
+                                             )
+                                             
+                                             
+                                     )
+                              ),
+                              column(8,
+                                     
+                                     
+                                     navlistPanel(
+                                             "Test Data Sets",
+                                             tabPanel("U.S Dollar",
+                                                      dataTableOutput("test_data1")),
+                                             tabPanel("British Pound ",
+                                                      dataTableOutput("test_data2")),
+                                             tabPanel("Euro",
+                                                      dataTableOutput("test_data3")),
+                                             tabPanel("Swiss Franc",
+                                                      dataTableOutput("test_data4")),
+                                             tabPanel("Australian Dollar ",
+                                                      dataTableOutput("test_data5")),
+                                             tabPanel("Canadian Dollar ", 
+                                                      dataTableOutput("test_data6")),
+                                             tabPanel("Singapore Dollar ",
+                                                      dataTableOutput("test_data7"))
+                                     )
+                              )
+                      )
+                      ),
              
              tabPanel("About Me " ,
                       
                       fluidRow(
                               column(12,
-                                     textOutput("")
+                                     
+                                     tags$h2("Wut Hmone Hnin Hlaing"),
+                                     tags$h3("Junior Data Scientist"),
+                                     tags$h5("+601128174379"),
+                                     tags$h5("whlaing10@gmail.com"),
+                                     tags$a(href="https://github.com/wuthmone",tags$strong("GitHub")),
+                                     tags$a(href="https://www.linkedin.com/in/wuthmonehninhlaing", tags$strong( "LinkedIn"))
+                                     
+                                    
                               )))
             
   ))

@@ -6,6 +6,19 @@ h1 {
   line-height: 1.1;
   color: #428bca;
 }
+.navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-collapse {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.nav .nav-pills .nav-stacked > li > .navbar-brand{
+        font-family: "News Cycle", "Arial Narrow Bold", sans-serif;
+   font-size: 21px;
+  font-weight: 50;
+  line-height: 1.1;
+  color: #428bca;
+}
+
 h2{
    font-family: "News Cycle", "Arial Narrow Bold", sans-serif;
    font-size: 30px;
@@ -52,9 +65,10 @@ li .active {
 }
 html{
         margin: 0px 50px 10px 50px ;
-        padding: 10px;
+        padding: 0px;
         
 }
+
 body {
   background-color: #fff;
   font-weight: 100;
@@ -66,6 +80,7 @@ body {
   color: #fff;
 
 }
+
 a:hover {
     color: red;
 }

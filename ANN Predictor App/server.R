@@ -13,7 +13,6 @@ library(shiny)
 shinyServer(function(input, output) {
         source("./libraries.R")
         source("./functions.R")
-        
         predictor_order <- 3
         row_select <- 1
        
@@ -53,7 +52,14 @@ shinyServer(function(input, output) {
         
         output$result1 <- renderText({
                         test_result()
-                        
+                
+        })
+
+        output$test_data1 <- renderDataTable({
+                
+                test_data <- denormalized(data_set[[1]][[predictor_order-2]][[2]],usd_non_normalize) 
+                names(test_data) <- c("FirstDay","SecondDay","ThirdDay","Next Day")
+                head(test_data,10)
                 
                 
         })
