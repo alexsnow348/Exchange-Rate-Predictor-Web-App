@@ -76,7 +76,7 @@ shinyUI(fluidPage(theme = "bootstrap.css",
              tabPanel("How to Use " ,
                       
                       fluidRow(
-                              column(4,
+                              column(12,
                                      tags$strong(
                                              helpText("Testing Phase: Please use ONLY USD Dataset for now")
                                      ),
@@ -100,8 +100,12 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                              
                                              
                                      )
-                              ),
-                              column(8,
+                              )
+                            
+                      ),
+                      tags$h1(""),
+                      fluidRow(
+                              column(12,
                                      
                                      
                                      navlistPanel(
