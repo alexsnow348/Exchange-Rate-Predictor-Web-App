@@ -25,7 +25,8 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                               column(4,
                                      titlePanel(" Currency:"),
                                     radioButtons("currency", "",
-                                                 c("U.S Dollar to Malaysian Ringgit " = "USD",
+                                                 
+                                                 c("U.S Dollar to Malaysian Ringgit "= "USD",
                                                    "British Pound to Malaysian Ringgit" = "GBP",
                                                    "Euro to Malaysian Ringgit" = "EURO",
                                                    "Swiss Franc to Malaysian Ringgit" = "CHF",
@@ -52,8 +53,10 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                     
                                      titlePanel("Results:"),
                                      h3("Predicted Next Day Exchange Rate:"),
-                                     tags$span("RM "),
-                                     textOutput("result1")
+                                     tags$strong(tags$span("RM ")),
+                                     tags$span(tags$strong(textOutput("result1")))
+                                     
+                                     
                                      
                               )
                               
