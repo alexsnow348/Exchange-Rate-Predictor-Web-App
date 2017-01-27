@@ -19,6 +19,7 @@ shinyServer(function(input, output) {
       
         test_result <- reactive({
                 
+                # HOMO Model
                 if(input$currency=="USD" && input$model=="HOMO"){
                         homo_model1 <- Result_USD_HOMO_LIST[[row_select]][[5]][[6]][[1]]   
                         homo_model2 <- Result_USD_HOMO_LIST[[row_select]][[5]][[6]][[2]]   
@@ -47,6 +48,23 @@ shinyServer(function(input, output) {
                         max(result)
                        
                 }
+                
+                if(input$currency=="GBP" && input$model=="HOMO"){}
+                if(input$currency=="EURO" && input$model=="HOMO"){}
+                if(input$currency=="CHF" && input$model=="HOMO"){}
+                if(input$currency=="AUD" && input$model=="HOMO"){}
+                if(input$currency=="CAD" && input$model=="HOMO"){}
+                if(input$currency=="SGD" && input$model=="HOMO"){}
+                
+                
+                ## Hetro Model
+                if(input$currency=="USD" && input$model=="HETRO"){}
+                if(input$currency=="GBP" && input$model=="HETRO"){}
+                if(input$currency=="EURO" && input$model=="HETRO"){}
+                if(input$currency=="CHF" && input$model=="HETRO"){}
+                if(input$currency=="AUD" && input$model=="HETRO"){}
+                if(input$currency=="CAD" && input$model=="HETRO"){}
+                if(input$currency=="SGD" && input$model=="HETRO"){}
               
       })
         
