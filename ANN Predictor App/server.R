@@ -49,7 +49,7 @@ shinyServer(function(input, output) {
                        return(max(result)) 
                        
                 }
-<<<<<<< HEAD
+
                 if(input$currency=="GBP" && input$model=="HOMO"){
                         
                         homo_model1 <- Result_USD_HOMO_LIST[[row_select]][[5]][[6]][[1]]   
@@ -93,25 +93,9 @@ shinyServer(function(input, output) {
                 #if(input$currency=="AUD" && input$model=="HETRO"){}
                 #if(input$currency=="CAD" && input$model=="HETRO"){}
                 #if(input$currency=="SGD" && input$model=="HETRO"){}
-=======
+
                 
-                if(input$currency=="GBP" && input$model=="HOMO"){}
-                if(input$currency=="EURO" && input$model=="HOMO"){}
-                if(input$currency=="CHF" && input$model=="HOMO"){}
-                if(input$currency=="AUD" && input$model=="HOMO"){}
-                if(input$currency=="CAD" && input$model=="HOMO"){}
-                if(input$currency=="SGD" && input$model=="HOMO"){}
-                
-                
-                ## Hetro Model
-                if(input$currency=="USD" && input$model=="HETRO"){}
-                if(input$currency=="GBP" && input$model=="HETRO"){}
-                if(input$currency=="EURO" && input$model=="HETRO"){}
-                if(input$currency=="CHF" && input$model=="HETRO"){}
-                if(input$currency=="AUD" && input$model=="HETRO"){}
-                if(input$currency=="CAD" && input$model=="HETRO"){}
-                if(input$currency=="SGD" && input$model=="HETRO"){}
->>>>>>> 8f63ea8797413f427ba95de0ddac55f8ea6faf03
+          
               
       })
         
