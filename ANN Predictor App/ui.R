@@ -31,7 +31,6 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                                    "Euro to Malaysian Ringgit" = "EURO",
                                                    "Swiss Franc to Malaysian Ringgit" = "CHF",
                                                    "Australian Dollar to Malaysian Ringgit " = "AUD",
-                                                   "Canadian Dollar to Malaysian Ringgit" = "CAD",
                                                    "Singapore Dollar to Malaysian Ringgit" = "SGD")),
                                     titlePanel("Prediction Model:"),
                                     radioButtons("model", "",
@@ -54,8 +53,11 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                      titlePanel("Results:"),
                                      h3("Predicted Next Day Exchange Rate:"),
                                      tags$strong(tags$span("RM ")),
-                                     tags$span(tags$strong(textOutput("result1")))
-                                     
+                                     tags$span(tags$strong(textOutput("result1"))),
+                                     tags$h1(""),
+                                     tags$h1(""),
+                                     tags$strong( helpText("Note: The number of inputs are selected based on the best opitimal models 
+                                        which yeild lowest Rooted Mean Square Error(RMSE).") )
                                      
                                      
                               )
@@ -94,10 +96,15 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                                      tags$p(""),
                                                      tags$li("Select the Model."), 
                                                      tags$p(""),
-                                                     tags$li("Please Enter the inputs by referring test dataset."),
+                                                     tags$li("Please Enter the inputs by referring test dataset based on 
+                                                             Currency."),
                                                      tags$p(""),
-                                                     tags$li("Click Predict Button.")
-                                                     
+                                                     tags$li("Please Copy and Paste the desired row to test out."),
+                                                     tags$p(""),
+                                                     tags$li("Click Predict Button."),
+                                                     tags$p(""),
+                                                     tags$li("Please come back to How to Use Page to compare
+                                                             the predicted result with NextDay value")
                                                      
                                              )
                                              
@@ -123,8 +130,6 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                                       dataTableOutput("test_data4")),
                                              tabPanel("Australian Dollar ",
                                                       dataTableOutput("test_data5")),
-                                             tabPanel("Canadian Dollar ", 
-                                                      dataTableOutput("test_data6")),
                                              tabPanel("Singapore Dollar ",
                                                       dataTableOutput("test_data7"))
                                      )
