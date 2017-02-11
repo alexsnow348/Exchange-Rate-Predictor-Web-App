@@ -39,7 +39,6 @@ shinyServer(function(input, output, session) {
                 max(result) 
         }) # End SGD HOMO
         
-        
         test_homo_usd <- reactive({
                 predictor_order <- 9
                 
@@ -73,7 +72,124 @@ shinyServer(function(input, output, session) {
                 max(result)
         }) # End of USD HOMO
         
+        test_homo_gbp <- reactive({
+                
+                predictor_order <- 3
+                value1 <- as.numeric(input$gbp_homo_dayOne)
+                value2 <- as.numeric(input$gbp_homo_dayTwo)
+                value3 <- as.numeric(input$gbp_homo_dayThree)
+                
+                test <- cbind(value1,value2,value3)
+                normalized_test <-  (test-min(test))/(max(test)-min(test))
+                
+                
+                model_results <- neuralnet::compute(homo_gbp_model1_60, normalized_test)
+                predicted_oneDayhead <- model_results$net.result
+                
+                model_results2 <- neuralnet::compute(homo_gbp_model2_60, normalized_test)
+                predicted_oneDayhead2 <- model_results2$net.result
+                
+                model_results3 <- neuralnet::compute(homo_gbp_model3_60, normalized_test)
+                predicted_oneDayhead3 <- model_results3$net.result
+                
+                all_predicted <- cbind(predicted_oneDayhead,predicted_oneDayhead2,predicted_oneDayhead3)
+                result <- denormalized(all_predicted,test)
+                min(result) 
+        }) # End of GBP HOMO
+        
+        test_homo_eur <- reactive({
+                
+                predictor_order <- 3
+                value1 <- as.numeric(input$eur_homo_dayOne)
+                value2 <- as.numeric(input$eur_homo_dayTwo)
+                value3 <- as.numeric(input$eur_homo_dayThree)
+                
+                test <- cbind(value1,value2,value3)
+                normalized_test <-  (test-min(test))/(max(test)-min(test))
+                
+                
+                model_results <- neuralnet::compute(homo_eur_model1_60, normalized_test)
+                predicted_oneDayhead <- model_results$net.result
+                
+                model_results2 <- neuralnet::compute(homo_eur_model2_60, normalized_test)
+                predicted_oneDayhead2 <- model_results2$net.result
+                
+                model_results3 <- neuralnet::compute(homo_eur_model3_60, normalized_test)
+                predicted_oneDayhead3 <- model_results3$net.result
+                
+                all_predicted <- cbind(predicted_oneDayhead,predicted_oneDayhead2,predicted_oneDayhead3)
+                result <- denormalized(all_predicted,test)
+                min(result) 
+        }) # End of EURO HOMO
+        
+        test_homo_chf <- reactive({
+                predictor_order <- 9
+                
+                
+                value1 <- as.numeric(input$chf_homo_dayOne)
+                value2 <- as.numeric(input$chf_homo_dayTwo)
+                value3 <- as.numeric(input$chf_homo_dayThree)
+                value4 <- as.numeric(input$chf_homo_dayFour)
+                value5 <- as.numeric(input$chf_homo_dayFive)
+                value6 <- as.numeric(input$chf_homo_daySix)
+                value7 <- as.numeric(input$chf_homo_daySeven)
+                value8 <- as.numeric(input$chf_homo_dayEight)
+                value9 <- as.numeric(input$chf_homo_dayNine)
+                
+                test <- cbind(value1,value2,value3,value4,value5,value6,value7,value8,value9)
+                normalized_test <-  (test-min(test))/(max(test)-min(test))
+                
+                
+                model_results <- neuralnet::compute(homo_usd_model1_60, normalized_test)
+                predicted_oneDayhead <- model_results$net.result
+                
+                model_results2 <- neuralnet::compute(homo_usd_model2_60, normalized_test)
+                predicted_oneDayhead2 <- model_results2$net.result
+                
+                model_results3 <- neuralnet::compute(homo_usd_model3_60, normalized_test)
+                predicted_oneDayhead3 <- model_results3$net.result
+                
+                all_predicted <- cbind(predicted_oneDayhead,predicted_oneDayhead2,predicted_oneDayhead3)
+                result <- denormalized(all_predicted,test)
+                
+                max(result)
+        }) # End of CHF HOMO
+        
+        test_homo_aud <- reactive({
+                predictor_order <- 9
+                
+                
+                value1 <- as.numeric(input$aud_homo_dayOne)
+                value2 <- as.numeric(input$aud_homo_dayTwo)
+                value3 <- as.numeric(input$aud_homo_dayThree)
+                value4 <- as.numeric(input$aud_homo_dayFour)
+                value5 <- as.numeric(input$aud_homo_dayFive)
+                value6 <- as.numeric(input$aud_homo_daySix)
+                value7 <- as.numeric(input$aud_homo_daySeven)
+                value8 <- as.numeric(input$aud_homo_dayEight)
+                value9 <- as.numeric(input$aud_homo_dayNine)
+                
+                test <- cbind(value1,value2,value3,value4,value5,value6,value7,value8,value9)
+                normalized_test <-  (test-min(test))/(max(test)-min(test))
+                
+                
+                model_results <- neuralnet::compute(homo_usd_model1_60, normalized_test)
+                predicted_oneDayhead <- model_results$net.result
+                
+                model_results2 <- neuralnet::compute(homo_usd_model2_60, normalized_test)
+                predicted_oneDayhead2 <- model_results2$net.result
+                
+                model_results3 <- neuralnet::compute(homo_usd_model3_60, normalized_test)
+                predicted_oneDayhead3 <- model_results3$net.result
+                
+                all_predicted <- cbind(predicted_oneDayhead,predicted_oneDayhead2,predicted_oneDayhead3)
+                result <- denormalized(all_predicted,test)
+                
+                max(result)
+        }) # End of AUD HOMO
+        
         result <- observe({
+                # USD HOMO
                 if(input$currency=="USD" && input$model=="HOMO"){
                        
                         output$result1 <- renderText({
@@ -92,7 +208,7 @@ shinyServer(function(input, output, session) {
                 updateTextInput(session, "usd_homo_dayEight", value = "")
                 updateTextInput(session, "usd_homo_dayNine", value = "")
                 
-                
+                # SGD HOMO
                 if(input$currency=="SGD" && input$model=="HOMO"){
                         output$result1 <- renderText({
                                 test_homo_sgd()
@@ -103,6 +219,68 @@ shinyServer(function(input, output, session) {
                 updateTextInput(session, "sgd_homo_dayOne", value = "")
                 updateTextInput(session, "sgd_homo_dayTwo", value = "")
                 updateTextInput(session, "sgd_homo_dayThree", value = "")
+                
+                # GBP HOMO
+                if(input$currency=="GBP" && input$model=="HOMO"){
+                        output$result1 <- renderText({
+                                test_homo_gbp()
+                        }) 
+                        
+                }
+                
+                updateTextInput(session, "gbp_homo_dayOne", value = "")
+                updateTextInput(session, "gbp_homo_dayTwo", value = "")
+                updateTextInput(session, "gbp_homo_dayThree", value = "")
+                
+                # EURO HOMO
+                if(input$currency=="EURO" && input$model=="HOMO"){
+                        output$result1 <- renderText({
+                                test_homo_eur()
+                        }) 
+                        
+                }
+                
+                updateTextInput(session, "eur_homo_dayOne", value = "")
+                updateTextInput(session, "eur_homo_dayTwo", value = "")
+                updateTextInput(session, "eur_homo_dayThree", value = "")
+                
+                # CHF HOMO
+                if(input$currency=="CHF" && input$model=="HOMO"){
+                        
+                        output$result1 <- renderText({
+                                test_homo_chf()
+                        })
+                        
+                }
+                
+                updateTextInput(session, "chf_homo_dayOne", value = "")
+                updateTextInput(session, "chf_homo_dayTwo", value = "")
+                updateTextInput(session, "chf_homo_dayThree", value = "")
+                updateTextInput(session, "chf_homo_dayFour", value = "")
+                updateTextInput(session, "chf_homo_dayFive", value = "")
+                updateTextInput(session, "chf_homo_daySix", value = "")
+                updateTextInput(session, "chf_homo_daySeven", value = "")
+                updateTextInput(session, "chf_homo_dayEight", value = "")
+                updateTextInput(session, "chf_homo_dayNine", value = "")
+                
+                # AUD HOMO
+                if(input$currency=="AUD" && input$model=="HOMO"){
+                        
+                        output$result1 <- renderText({
+                                test_homo_aud()
+                        })
+                        
+                }
+                
+                updateTextInput(session, "aud_homo_dayOne", value = "")
+                updateTextInput(session, "aud_homo_dayTwo", value = "")
+                updateTextInput(session, "aud_homo_dayThree", value = "")
+                updateTextInput(session, "aud_homo_dayFour", value = "")
+                updateTextInput(session, "aud_homo_dayFive", value = "")
+                updateTextInput(session, "aud_homo_daySix", value = "")
+                updateTextInput(session, "aud_homo_daySeven", value = "")
+                updateTextInput(session, "aud_homo_dayEight", value = "")
+                updateTextInput(session, "aud_homo_dayNine", value = "")
                 
         }) # End of Observe
         

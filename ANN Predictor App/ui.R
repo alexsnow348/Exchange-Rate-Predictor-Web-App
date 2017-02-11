@@ -119,9 +119,9 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                               
                                               column(4,
                                                      titlePanel("Inputs:"),
-                                                     textInput("dayOne", "Enter 1st Day  Data:",  placeholder = "3.30"),
-                                                     textInput("dayTwo", "Enter 2nd Day Data:", placeholder = "3.25"),
-                                                     textInput("dayThree", "Enter 3rd Day  Data:", placeholder = "3.23"),
+                                                     textInput("eur_homo_dayOne", "Enter 1st Day  Data:",  placeholder = "3.30"),
+                                                     textInput("eur_homo_dayTwo", "Enter 2nd Day Data:", placeholder = "3.25"),
+                                                     textInput("eur_homo_dayThree", "Enter 3rd Day  Data:", placeholder = "3.23"),
                                                      submitButton("Predict")
                                               )
                                               
@@ -137,9 +137,9 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                               
                                               column(4,
                                                      titlePanel("Inputs:"),
-                                                     textInput("dayOne", "Enter 1st Day  Data:",  placeholder = "3.30"),
-                                                     textInput("dayTwo", "Enter 2nd Day Data:", placeholder = "3.25"),
-                                                     textInput("dayThree", "Enter 3rd Day  Data:", placeholder = "3.23"),
+                                                     textInput("gbp_homo_dayOne", "Enter 1st Day  Data:",  placeholder = "3.30"),
+                                                     textInput("gbp_homo_dayTwo", "Enter 2nd Day Data:", placeholder = "3.25"),
+                                                     textInput("gbp_homo_dayThree", "Enter 3rd Day  Data:", placeholder = "3.23"),
                                                      submitButton("Predict")
                                               )
                                               
@@ -234,10 +234,10 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                                      titlePanel("Inputs:"),
                                                      tags$h1(""),
                                                      tags$h1(""),
-                                                     textInput("dayOne", "Enter 1st Day  Data:",  placeholder = "3.30"),
-                                                     textInput("dayTwo", "Enter 2nd Day Data:", placeholder = "3.25"),
-                                                     textInput("dayThree", "Enter 3rd Day Data:", placeholder = "3.23"),
-                                                     textInput("dayFour", "Enter 4th Day Data:", placeholder = "3.23"), 
+                                                     textInput("aud_homo_dayOne", "Enter 1st Day  Data:",  placeholder = "3.30"),
+                                                     textInput("aud_homo_dayTwo", "Enter 2nd Day Data:", placeholder = "3.25"),
+                                                     textInput("aud_homo_dayThree", "Enter 3rd Day Data:", placeholder = "3.23"),
+                                                     textInput("aud_homo_dayFour", "Enter 4th Day Data:", placeholder = "3.23"), 
                                                      submitButton("Predict")
                                               ),
                                               column(2,
@@ -245,11 +245,11 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                                      br(),
                                                      br(),
                                                      br(),
-                                                     textInput("dayFive", "Enter 5th Day  Data:",  placeholder = "3.30"),
-                                                     textInput("daySix", "Enter 6th Day  Data:", placeholder = "3.25"),
-                                                     textInput("daySeven", "Enter 7th Day Data:", placeholder = "3.23"),
-                                                     textInput("dayEight", "Enter 8th Day  Data:", placeholder = "3.23"), 
-                                                     textInput("dayNine", "Enter 9th Day Data:", placeholder = "3.23")
+                                                     textInput("aud_homo_dayFive", "Enter 5th Day  Data:",  placeholder = "3.30"),
+                                                     textInput("aud_homo_daySix", "Enter 6th Day  Data:", placeholder = "3.25"),
+                                                     textInput("aud_homo_daySeven", "Enter 7th Day Data:", placeholder = "3.23"),
+                                                     textInput("aud_homo_dayEight", "Enter 8th Day  Data:", placeholder = "3.23"), 
+                                                     textInput("aud_homo_dayNine", "Enter 9th Day Data:", placeholder = "3.23")
                                                      
                                               )
                                               
@@ -267,10 +267,10 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                                      titlePanel("Inputs:"),
                                                      tags$h1(""),
                                                      tags$h1(""),
-                                                     textInput("dayOne", "Enter 1st Day  Data:",  placeholder = "3.30"),
-                                                     textInput("dayTwo", "Enter 2nd Day Data:", placeholder = "3.25"),
-                                                     textInput("dayThree", "Enter 3rd Day Data:", placeholder = "3.23"),
-                                                     textInput("dayFour", "Enter 4th Day Data:", placeholder = "3.23"), 
+                                                     textInput("chf_homo_dayOne", "Enter 1st Day  Data:",  placeholder = "3.30"),
+                                                     textInput("chf_homo_dayTwo", "Enter 2nd Day Data:", placeholder = "3.25"),
+                                                     textInput("chf_homo_dayThree", "Enter 3rd Day Data:", placeholder = "3.23"),
+                                                     textInput("chf_homo_dayFour", "Enter 4th Day Data:", placeholder = "3.23"), 
                                                      submitButton("Predict")
                                               ),
                                               column(2,
@@ -278,11 +278,11 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                                      br(),
                                                      br(),
                                                      br(),
-                                                     textInput("dayFive", "Enter 5th Day  Data:",  placeholder = "3.30"),
-                                                     textInput("daySix", "Enter 6th Day  Data:", placeholder = "3.25"),
-                                                     textInput("daySeven", "Enter 7th Day Data:", placeholder = "3.23"),
-                                                     textInput("dayEight", "Enter 8th Day  Data:", placeholder = "3.23"), 
-                                                     textInput("dayNine", "Enter 9th Day Data:", placeholder = "3.23")
+                                                     textInput("chf_homo_dayFive", "Enter 5th Day  Data:",  placeholder = "3.30"),
+                                                     textInput("chf_homo_daySix", "Enter 6th Day  Data:", placeholder = "3.25"),
+                                                     textInput("chf_homo_daySeven", "Enter 7th Day Data:", placeholder = "3.23"),
+                                                     textInput("chf_homo_dayEight", "Enter 8th Day  Data:", placeholder = "3.23"), 
+                                                     textInput("chf_homo_dayNine", "Enter 9th Day Data:", placeholder = "3.23")
                                               )
                                               
                                               
