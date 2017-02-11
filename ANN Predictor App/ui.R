@@ -100,9 +100,9 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                               
                                               column(4,
                                                      titlePanel("Inputs:"),
-                                                     textInput("dayOne", "Enter 1st Day  Data:",  placeholder = "3.30"),
-                                                     textInput("dayTwo", "Enter 2nd Day Data:", placeholder = "3.25"),
-                                                     textInput("dayThree", "Enter 3rd Day  Data:", placeholder = "3.23"),
+                                                     textInput("usd_hetero_dayOne", "Enter 1st Day  Data:",  placeholder = "3.30"),
+                                                     textInput("usd_hetero_dayTwo", "Enter 2nd Day Data:", placeholder = "3.25"),
+                                                     textInput("usd_hetero_dayThree", "Enter 3rd Day  Data:", placeholder = "3.23"),
                                                      submitButton("Predict")
                                               )
                                               
@@ -155,10 +155,10 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                               
                                               column(4,
                                                      titlePanel("Inputs:"),
-                                                     textInput("dayOne", "Enter 1st Day  Data:",  placeholder = "3.30"),
-                                                     textInput("dayTwo", "Enter 2nd Day Data:", placeholder = "3.25"),
-                                                     textInput("dayThree", "Enter 3rd Day  Data:", placeholder = "3.23"),
-                                                     textInput("dayFour", "Enter 4th Day Data:", placeholder = "3.23"), 
+                                                     textInput("gbp_hetero_dayOne", "Enter 1st Day  Data:",  placeholder = "3.30"),
+                                                     textInput("gbp_hetero_dayTwo", "Enter 2nd Day Data:", placeholder = "3.25"),
+                                                     textInput("gbp_hetero_dayThree", "Enter 3rd Day  Data:", placeholder = "3.23"),
+                                                     textInput("gbp_hetero_dayFour", "Enter 4th Day Data:", placeholder = "3.23"), 
                                                      submitButton("Predict")
                                               )
                                               
@@ -174,9 +174,9 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                               
                                               column(4,
                                                      titlePanel("Inputs:"),
-                                                     textInput("dayOne", "Enter 1st Day  Data:",  placeholder = "3.30"),
-                                                     textInput("dayTwo", "Enter 2nd Day Data:", placeholder = "3.25"),
-                                                     textInput("dayThree", "Enter 3rd Day  Data:", placeholder = "3.23"),
+                                                     textInput("eur_hetero_dayOne", "Enter 1st Day  Data:",  placeholder = "3.30"),
+                                                     textInput("eur_hetero_dayTwo", "Enter 2nd Day Data:", placeholder = "3.25"),
+                                                     textInput("eur_hetero_dayThree", "Enter 3rd Day  Data:", placeholder = "3.23"),
                                                      submitButton("Predict")
                                               )
                                               
@@ -194,9 +194,9 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                               
                                               column(4,
                                                      titlePanel("Inputs:"),
-                                                     textInput("dayOne", "Enter 1st Day  Data:",  placeholder = "3.30"),
-                                                     textInput("dayTwo", "Enter 2nd Day Data:", placeholder = "3.25"),
-                                                     textInput("dayThree", "Enter 3rd Day  Data:", placeholder = "3.23"),
+                                                     textInput("sgd_hetero_dayOne", "Enter 1st Day  Data:",  placeholder = "3.30"),
+                                                     textInput("sgd_hetero_dayTwo", "Enter 2nd Day Data:", placeholder = "3.25"),
+                                                     textInput("sgd_hetero_dayThree", "Enter 3rd Day  Data:", placeholder = "3.23"),
                                                      submitButton("Predict")
                                               )
                                               
@@ -213,9 +213,9 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                               
                                               column(4,
                                                      titlePanel("Inputs:"),
-                                                     textInput("dayOne", "Enter 1st Day  Data:",  placeholder = "3.30"),
-                                                     textInput("dayTwo", "Enter 2nd Day Data:", placeholder = "3.25"),
-                                                     textInput("dayThree", "Enter 3rd Day  Data:", placeholder = "3.23"),
+                                                     textInput("aud_hetero_dayOne", "Enter 1st Day  Data:",  placeholder = "3.30"),
+                                                     textInput("aud_hetero_dayTwo", "Enter 2nd Day Data:", placeholder = "3.25"),
+                                                     textInput("aud_hetero_dayThree", "Enter 3rd Day  Data:", placeholder = "3.23"),
                                                      submitButton("Predict")
                                               )
                                               
@@ -299,10 +299,10 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                                      titlePanel("Inputs:"),
                                                      tags$h1(""),
                                                      tags$h1(""),
-                                                     textInput("dayOne", "Enter 1st Day  Data:",  placeholder = "3.30"),
-                                                     textInput("dayTwo", "Enter 2nd Day Data:", placeholder = "3.25"),
-                                                     textInput("dayThree", "Enter 3rd Day Data:", placeholder = "3.23"),
-                                                     textInput("dayFour", "Enter 4th Day Data:", placeholder = "3.23"), 
+                                                     textInput("chf_hetero_dayOne", "Enter 1st Day  Data:",  placeholder = "3.30"),
+                                                     textInput("chf_hetero_dayTwo", "Enter 2nd Day Data:", placeholder = "3.25"),
+                                                     textInput("chf_hetero_dayThree", "Enter 3rd Day Data:", placeholder = "3.23"),
+                                                     textInput("chf_hetero_dayFour", "Enter 4th Day Data:", placeholder = "3.23"), 
                                                      submitButton("Predict") 
                                               ),
                                               column(2,
@@ -310,14 +310,12 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                                      br(),
                                                      br(),
                                                      br(),
-                                                     textInput("dayFive", "Enter 5th Day  Data:",  placeholder = "3.30"),
-                                                     textInput("daySix", "Enter 6th Day  Data:", placeholder = "3.25"),
-                                                     textInput("daySeven", "Enter 7th Day Data:", placeholder = "3.23"),
-                                                     textInput("dayEight", "Enter 8th Day  Data:", placeholder = "3.23")
+                                                     textInput("chf_hetero_dayFive", "Enter 5th Day  Data:",  placeholder = "3.30"),
+                                                     textInput("chf_hetero_daySix", "Enter 6th Day  Data:", placeholder = "3.25"),
+                                                     textInput("chf_hetero_daySeven", "Enter 7th Day Data:", placeholder = "3.23"),
+                                                     textInput("chf_hetero_dayEight", "Enter 8th Day  Data:", placeholder = "3.23")
                                                      
                                               )
-                                              
-                                              
                                               
                                       )
                                       
@@ -331,10 +329,16 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                      
                                      tags$span(tags$strong(textOutput("result1"))),
                                      
-                                     tags$h1(""),
-                                     tags$h1(""),
+                                     br(),
+                                     br(),
+                                     br(),
+                                     br(),
+                                     br(),
+                                     br(),
+                                     br(),
+                                     br(),
                                      tags$strong( helpText("Note: The number of inputs are selected based on the best opitimal models 
-                                        which yeild lowest Rooted Mean Square Error (RMSE).") )
+                                        which yield lowest Rooted Mean Square Error (RMSE).") )
                                      
                                      
                               )
@@ -364,19 +368,21 @@ tabPanel("How to Use",
                                
                                tags$ol(
                                        tags$strong(
-                                               tags$li("Select the Currency for Prediction."), 
+                                               tags$li("Please select the Currency for Prediction."), 
                                                tags$p(""),
-                                               tags$li("Select the Model."), 
+                                               tags$li("Please select the Model and click Submit Button."), 
                                                tags$p(""),
                                                tags$li("Please Enter the inputs by referring test dataset based on 
-                                                       Currency."),
+                                                       Currency or Go to the ", 
+                                                       tags$a(href="http://www.bnm.gov.my/index.php?ch=statistic&pg=stats_exchangerates",
+                                                              tags$strong(" Bank Negara Malaysia "),target="_blank"),
+                                                       " to collect the data."),
                                                tags$p(""),
-                                               tags$li("Please Copy and Paste the desired row to test out."),
+                                               tags$li("Please Copy and Paste the desired row to test out"),
                                                tags$p(""),
                                                tags$li("Click Predict Button."),
                                                tags$p(""),
-                                               tags$li("Please come back to How to Use Page to compare
-                                                                     the predicted result with NextDay value")
+                                               tags$li("Please compare the predicted result with NextDay value.")
                                                
                                                )
                                        
@@ -419,11 +425,10 @@ tabPanel("How to Use",
                               column(12,
                                      
                                      tags$h2("Wut Hmone Hnin Hlaing"),
-                                     tags$h3("Junior Data Scientist"),
-                                     tags$h5("+601128174379"),
-                                     tags$h5("whlaing10@gmail.com"),
-                                     tags$a(href="https://github.com/wuthmone",tags$strong("GitHub")),
-                                     tags$a(href="https://www.linkedin.com/in/wuthmonehninhlaing", tags$strong( "LinkedIn"))
+                                     tags$h3("whlaing10@gmail.com"),
+                                     br(),
+                                     tags$a(href="https://github.com/wuthmone",tags$strong("GitHub"),target="_blank"),
+                                     tags$a(href="https://www.linkedin.com/in/wuthmonehninhlaing", tags$strong( "LinkedIn"), target="_blank")
                                      
                                     
                               )))

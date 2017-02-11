@@ -6,6 +6,8 @@ library(MASS)
 library(caret)
 library(NeuralNetTools)
 library(dplyr)
+library("RSNNS")
+library("rnn")
 
 ### FUNCTIONS
 
