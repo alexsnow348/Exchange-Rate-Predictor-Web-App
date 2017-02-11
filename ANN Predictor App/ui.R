@@ -358,8 +358,6 @@ tabPanel("How to Use",
          
          fluidRow(
                  column(12,
-                        tags$strong(
-                                helpText("Testing Phase: Please use ONLY USD Dataset for now")),
                         column(9,
                                tags$h1(""),
                                tags$h2("Steps:"),
