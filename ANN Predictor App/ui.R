@@ -7,7 +7,7 @@
 #    http://shiny.rstudio.com/
 #
 #library(rsconnect)
-#rsconnect::deployApp('~/Desktop/FYP_WEP_APP/ANN Predictor App')
+#rsconnect::deployApp('/home/wut/Desktop/Link to Data/FYP_WEP_APP/ANN Predictor App')
 
 library(shiny)
 
