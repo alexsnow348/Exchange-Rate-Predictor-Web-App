@@ -20,11 +20,10 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                           type = "text/css", href = "style.css")),
              
              tabPanel("Exchange Rate Predictor",
-                      h4("Note: For the first time tester, please refer to the How To Use page") ,
+                      h5("Note: For the first time tester, please refer to the How To Use page") ,
                       fluidRow(
                               column(4,
                                      titlePanel(" Currency:"),
-                                     
                                     radioButtons("currency", "",
                                                  c("Singapore Dollar to Malaysian Ringgit" = "SGD",
                                                    "U.S Dollar to Malaysian Ringgit "= "USD",
@@ -36,13 +35,17 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                     
                                     radioButtons("model", "",
                                                  c("Homogeneous Model" = "HOMO",
-                                                   "Hetrogeneous Model" = "HETRO")),
+                                                   "Hetrogeneous Model" = "HETRO",
+                                                   "MLP"="MLP",
+                                                   "RNN"="RNN",
+                                                   "RBF"="RBF")),
                                     submitButton("Submit")
                                     ),
                               conditionalPanel(
                                       condition = "input.currency == 'SGD'"  ,
                                       conditionalPanel(
-                                              condition = "input.model == 'HOMO'", 
+                                              condition = "input.model == 'HOMO'|| input.model == 'MLP'|| input.model == 'RNN'
+                                              || input.model == 'RBF'", 
                                               
                                               column(4,
                                                      titlePanel("Inputs:"),
@@ -61,7 +64,8 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                               conditionalPanel(
                                       condition = "input.currency == 'USD'"  ,
                                       conditionalPanel(
-                                              condition = "input.model == 'HOMO'", 
+                                              condition = "input.model == 'HOMO'|| input.model == 'MLP'|| input.model == 'RNN'
+                                              || input.model == 'RBF'", 
                                               
                                               column(2,
                                                      titlePanel("Inputs:"),
@@ -115,7 +119,8 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                               conditionalPanel(
                                       condition = "input.currency == 'EURO'"  ,
                                       conditionalPanel(
-                                              condition = "input.model == 'HOMO'", 
+                                              condition = "input.model == 'HOMO'|| input.model == 'MLP'|| input.model == 'RNN'
+                                              || input.model == 'RBF'", 
                                               
                                               column(4,
                                                      titlePanel("Inputs:"),
@@ -133,7 +138,8 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                               conditionalPanel(
                                       condition = "input.currency == 'GBP'"  ,
                                       conditionalPanel(
-                                              condition = "input.model == 'HOMO'", 
+                                              condition = "input.model == 'HOMO'|| input.model == 'MLP'|| input.model == 'RNN'
+                                              || input.model == 'RBF'", 
                                               
                                               column(4,
                                                      titlePanel("Inputs:"),
@@ -228,7 +234,8 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                               conditionalPanel(
                                       condition = "input.currency == 'AUD'"  ,
                                       conditionalPanel(
-                                              condition = "input.model == 'HOMO'", 
+                                              condition = "input.model == 'HOMO'|| input.model == 'MLP'|| input.model == 'RNN'
+                                              || input.model == 'RBF'", 
                                               
                                               column(2,
                                                      titlePanel("Inputs:"),
@@ -261,7 +268,8 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                               conditionalPanel(
                                       condition = "input.currency == 'CHF'"  ,
                                       conditionalPanel(
-                                              condition = "input.model == 'HOMO'", 
+                                              condition = "input.model == 'HOMO'|| input.model == 'MLP'|| input.model == 'RNN'
+                                              || input.model == 'RBF'", 
                                               
                                               column(2,
                                                      titlePanel("Inputs:"),

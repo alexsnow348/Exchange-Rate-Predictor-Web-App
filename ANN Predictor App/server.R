@@ -66,6 +66,22 @@ shinyServer(function(input, output, session) {
                 max(result) 
         }) # End SGD HETERO
         
+        test_mlp_sgd <- reactive({
+                predictor_order <- 3
+                
+                value1 <- as.numeric(input$sgd_homo_dayOne)
+                value2 <- as.numeric(input$sgd_homo_dayTwo)
+                value3 <- as.numeric(input$sgd_homo_dayThree)
+                
+                test <- cbind(value1,value2,value3)
+                normalized_test <-  (test-min(test))/(max(test)-min(test))
+                
+                model_results <- neuralnet::compute(mlp_sgd, normalized_test)
+                predicted_oneDayhead <- model_results$net.result
+                result <- denormalized(predicted_oneDayhead,test)
+                return(result)
+        }) # End SGD MLP
+        
         test_homo_usd <- reactive({
                 predictor_order <- 9
                 
@@ -126,6 +142,32 @@ shinyServer(function(input, output, session) {
                 max(result)
         }) # End of USD HETERO
         
+        test_mlp_usd <- reactive({
+                predictor_order <- 9
+                
+                
+                value1 <- as.numeric(input$usd_homo_dayOne)
+                value2 <- as.numeric(input$usd_homo_dayTwo)
+                value3 <- as.numeric(input$usd_homo_dayThree)
+                value4 <- as.numeric(input$usd_homo_dayFour)
+                value5 <- as.numeric(input$usd_homo_dayFive)
+                value6 <- as.numeric(input$usd_homo_daySix)
+                value7 <- as.numeric(input$usd_homo_daySeven)
+                value8 <- as.numeric(input$usd_homo_dayEight)
+                value9 <- as.numeric(input$usd_homo_dayNine)
+                
+                test <- cbind(value1,value2,value3,value4,value5,value6,value7,value8,value9)
+                normalized_test <-  (test-min(test))/(max(test)-min(test))
+                
+                model_results <- neuralnet::compute(mlp_usd, normalized_test)
+                predicted_oneDayhead <- model_results$net.result
+                
+                result <- denormalized(predicted_oneDayhead,test)
+                return(result)
+                
+                
+        }) # End of USD MLP
+        
         test_homo_gbp <- reactive({
                 
                 predictor_order <- 3
@@ -177,6 +219,22 @@ shinyServer(function(input, output, session) {
                 min(result) 
         }) # End of GBP HETERO
         
+        test_mlp_gbp <- reactive({
+                
+                predictor_order <- 3
+                value1 <- as.numeric(input$gbp_homo_dayOne)
+                value2 <- as.numeric(input$gbp_homo_dayTwo)
+                value3 <- as.numeric(input$gbp_homo_dayThree)
+                
+                test <- cbind(value1,value2,value3)
+                normalized_test <-  (test-min(test))/(max(test)-min(test))
+                
+                
+                model_results <- neuralnet::compute(mlp_gbp, normalized_test)
+                predicted_oneDayhead <- model_results$net.result
+                result <- denormalized(predicted_oneDayhead,test)
+        }) # End of GBP MLP
+        
         test_homo_eur <- reactive({
                 
                 predictor_order <- 3
@@ -226,6 +284,23 @@ shinyServer(function(input, output, session) {
                 result <- denormalized(all_predicted,test)
                 max(result) 
         }) # End of EURO HETERO
+        
+        test_mlp_eur <- reactive({
+                
+                predictor_order <- 3
+                value1 <- as.numeric(input$eur_homo_dayOne)
+                value2 <- as.numeric(input$eur_homo_dayTwo)
+                value3 <- as.numeric(input$eur_homo_dayThree)
+                
+                test <- cbind(value1,value2,value3)
+                normalized_test <-  (test-min(test))/(max(test)-min(test))
+                
+                
+                model_results <- neuralnet::compute(mlp_eur, normalized_test)
+                predicted_oneDayhead <- model_results$net.result
+                result <- denormalized(predicted_oneDayhead,test)
+                return(result) 
+        }) # End od EURO MLP
         
         test_homo_chf <- reactive({
                 predictor_order <- 9
@@ -291,6 +366,29 @@ shinyServer(function(input, output, session) {
                 max(result)
         }) # End of CHF HETERO
         
+        test_mlp_chf <- reactive({
+                predictor_order <- 9
+                value1 <- as.numeric(input$chf_homo_dayOne)
+                value2 <- as.numeric(input$chf_homo_dayTwo)
+                value3 <- as.numeric(input$chf_homo_dayThree)
+                value4 <- as.numeric(input$chf_homo_dayFour)
+                value5 <- as.numeric(input$chf_homo_dayFive)
+                value6 <- as.numeric(input$chf_homo_daySix)
+                value7 <- as.numeric(input$chf_homo_daySeven)
+                value8 <- as.numeric(input$chf_homo_dayEight)
+                value9 <- as.numeric(input$chf_homo_dayNine)
+                
+                test <- cbind(value1,value2,value3,value4,value5,value6,value7,value8,value9)
+                normalized_test <-  (test-min(test))/(max(test)-min(test))
+                model_results <- neuralnet::compute(mlp_chf, normalized_test)
+                predicted_oneDayhead <- model_results$net.result
+                result <- denormalized(predicted_oneDayhead,test)
+                
+                return(result)
+                
+                
+        }) # End of CHF MLP
+        
         test_homo_aud <- reactive({
                 predictor_order <- 9
                 
@@ -351,6 +449,30 @@ shinyServer(function(input, output, session) {
                 max(result)
         }) # End of AUD HETERO
         
+        test_mlp_aud <- reactive({
+                predictor_order <- 9
+                
+                value1 <- as.numeric(input$aud_homo_dayOne)
+                value2 <- as.numeric(input$aud_homo_dayTwo)
+                value3 <- as.numeric(input$aud_homo_dayThree)
+                value4 <- as.numeric(input$aud_homo_dayFour)
+                value5 <- as.numeric(input$aud_homo_dayFive)
+                value6 <- as.numeric(input$aud_homo_daySix)
+                value7 <- as.numeric(input$aud_homo_daySeven)
+                value8 <- as.numeric(input$aud_homo_dayEight)
+                value9 <- as.numeric(input$aud_homo_dayNine)
+                
+                test <- cbind(value1,value2,value3,value4,value5,value6,value7,value8,value9)
+                normalized_test <-  (test-min(test))/(max(test)-min(test))
+                model_results <- neuralnet::compute(mlp_aud, normalized_test)
+                predicted_oneDayhead <- model_results$net.result
+                result <- denormalized(predicted_oneDayhead,test)
+                
+                return(result)
+                
+                
+        }) # End of AUD MLP
+        
         result <- observe({
                 # USD HOMO
                 if(input$currency=="USD" && input$model=="HOMO"){
@@ -359,6 +481,13 @@ shinyServer(function(input, output, session) {
                                 test_homo_usd()
                         })
                        
+                }
+                # SGD MLP
+                if(input$currency=="USD" && input$model=="MLP"){
+                        output$result1 <- renderText({
+                                test_mlp_usd()
+                        }) 
+                        
                 }
                 
                 updateTextInput(session, "usd_homo_dayOne", value = "")
@@ -379,6 +508,7 @@ shinyServer(function(input, output, session) {
                         })
                         
                 }
+               
                 
                 updateTextInput(session, "usd_hetero_dayOne", value = "")
                 updateTextInput(session, "usd_hetero_dayTwo", value = "")
@@ -390,6 +520,14 @@ shinyServer(function(input, output, session) {
                                 test_homo_sgd()
                         }) 
                        
+                }
+                
+                # SGD MLP
+                if(input$currency=="SGD" && input$model=="MLP"){
+                        output$result1 <- renderText({
+                                test_mlp_sgd()
+                        }) 
+                        
                 }
                 
                 updateTextInput(session, "sgd_homo_dayOne", value = "")
@@ -412,6 +550,14 @@ shinyServer(function(input, output, session) {
                 if(input$currency=="GBP" && input$model=="HOMO"){
                         output$result1 <- renderText({
                                 test_homo_gbp()
+                        }) 
+                        
+                }
+                
+                # GBP MLP
+                if(input$currency=="GBP" && input$model=="MLP"){
+                        output$result1 <- renderText({
+                                test_mlp_gbp()
                         }) 
                         
                 }
@@ -441,6 +587,14 @@ shinyServer(function(input, output, session) {
                         
                 }
                 
+                # EURO MLP
+                if(input$currency=="EURO" && input$model=="MLP"){
+                        output$result1 <- renderText({
+                                test_mlp_eur()
+                        }) 
+                        
+                }
+                
                 updateTextInput(session, "eur_homo_dayOne", value = "")
                 updateTextInput(session, "eur_homo_dayTwo", value = "")
                 updateTextInput(session, "eur_homo_dayThree", value = "")
@@ -462,6 +616,15 @@ shinyServer(function(input, output, session) {
                         
                         output$result1 <- renderText({
                                 test_homo_chf()
+                        })
+                        
+                }
+                
+                # CHF MLP
+                if(input$currency=="CHF" && input$model=="MLP"){
+                        
+                        output$result1 <- renderText({
+                                test_mlp_chf()
                         })
                         
                 }
@@ -503,6 +666,15 @@ shinyServer(function(input, output, session) {
                         
                 }
                 
+                # AUD MLP
+                if(input$currency=="AUD" && input$model=="MLP"){
+                        
+                        output$result1 <- renderText({
+                                test_mlp_aud()
+                        })
+                        
+                }
+                
                 updateTextInput(session, "aud_homo_dayOne", value = "")
                 updateTextInput(session, "aud_homo_dayTwo", value = "")
                 updateTextInput(session, "aud_homo_dayThree", value = "")
@@ -532,7 +704,7 @@ shinyServer(function(input, output, session) {
         
         test_data <- observe({
                 
-        if(input$model == "HOMO"){
+        if(input$model == "HOMO" || input$model == 'MLP'|| input$model == 'RNN'|| input$model == 'RBF' ){
                 output$test_data1 <- renderDataTable({
                         predictor_order <- 9
                         test_data1 <- denormalized(data_set_60[[1]][[predictor_order -2]][[3]],data_set_60[[1]][[predictor_order -2]][[6]]) 

@@ -22,6 +22,8 @@ h1 {
 h2{
    font-family: "News Cycle", "Arial Narrow Bold", sans-serif;
    font-size: 30px;
+       margin-top: 10px;
+       margin-bottom: 10px;
   font-weight: 50;
   line-height: 1.1;
   color: #428bca;     
@@ -33,10 +35,12 @@ h3{
   line-height: 1.1;
   color: #000000;     
 }
-h4{
+h5{
    font-family: "News Cycle", "Arial Narrow Bold", sans-serif;
   font-weight: 10;
-  font-size: 21px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  font-size: 17px;
   line-height: 1.1;
   color: #808080;
 }
