@@ -338,7 +338,7 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                      br(),
                                      br(),
                                      tags$strong( helpText("Note: The number of inputs are selected based on the best opitimal models 
-                                        which yield lowest Rooted Mean Square Error (RMSE).") )
+                                        which yield lowest Root Mean Square Error (RMSE).") )
                                      
                                      
                               )

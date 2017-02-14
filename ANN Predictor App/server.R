@@ -545,7 +545,7 @@ shinyServer(function(input, output, session) {
                         predictor_order <- 3
                         test_data2 <- denormalized(data_set_60[[2]][[predictor_order-2]][[2]],data_set_60[[2]][[predictor_order-2]][[6]]) 
                         names(test_data2) <- c("1st Day","2nd Day","3rd Day","Next Day")
-                        head(test_data2,10)
+                        tail(test_data2,10)
                         
                         
                 })
@@ -553,7 +553,7 @@ shinyServer(function(input, output, session) {
                         predictor_order <- 3
                         test_data3 <- denormalized(data_set_60[[3]][[predictor_order-2]][[2]],data_set_60[[3]][[predictor_order-2]][[6]]) 
                         names(test_data3) <- c("1st Day","2nd Day","3rd Day","Next Day")
-                        head(test_data3,10)
+                        tail(test_data3,10)
                         
                         
                 })
@@ -561,7 +561,7 @@ shinyServer(function(input, output, session) {
                         predictor_order <- 9
                         test_data4 <- denormalized(data_set_60[[4]][[predictor_order-2]][[2]],data_set_60[[4]][[predictor_order-2]][[6]]) 
                         names(test_data4) <-  c("1st Day","2nd Day","3rd Day","4th Day","5th Day","6th Day","7th Day","8th Day","9th Day","Next Day")
-                        head(test_data4,10)
+                        tail(test_data4,10)
                         
                         
                 })
@@ -569,7 +569,7 @@ shinyServer(function(input, output, session) {
                         predictor_order <- 9
                         test_data5 <- denormalized(data_set_60[[5]][[predictor_order-2]][[2]],data_set_60[[5]][[predictor_order-2]][[6]]) 
                         names(test_data5) <-  c("1st Day","2nd Day","3rd Day","4th Day","5th Day","6th Day","7th Day","8th Day","9th Day","Next Day")
-                        head(test_data5,10)
+                        tail(test_data5,10)
                         
                         
                 })
@@ -578,13 +578,13 @@ shinyServer(function(input, output, session) {
                         predictor_order <- 3
                         test_data7 <- denormalized(data_set_60[[7]][[predictor_order-2]][[2]],data_set_60[[7]][[predictor_order-2]][[6]]) 
                         names(test_data7) <- c("1st Day","2nd Day","3rd Day","Next Day")
-                        head(test_data7,10)
+                        tail(test_data7,10)
                         
                         
                 })
                 
         } # HOMO DATASEt
-                if(input$model == "HETRO"){
+        if(input$model == "HETRO"){
                         output$test_data1 <- renderDataTable({
                                 predictor_order <- 3
                                 test_data1 <- denormalized(data_set_60[[1]][[predictor_order -2]][[3]],data_set_60[[1]][[predictor_order -2]][[6]]) 
@@ -597,7 +597,7 @@ shinyServer(function(input, output, session) {
                                 predictor_order <- 4
                                 test_data2 <- denormalized(data_set_60[[2]][[predictor_order-2]][[2]],data_set_60[[2]][[predictor_order-2]][[6]]) 
                                 names(test_data2) <- c("1st Day","2nd Day","3rd Day","4th Day","Next Day")
-                                head(test_data2,10)
+                                tail(test_data2,10)
                                 
                                 
                         })
@@ -605,7 +605,7 @@ shinyServer(function(input, output, session) {
                                 predictor_order <- 3
                                 test_data3 <- denormalized(data_set_60[[3]][[predictor_order-2]][[2]],data_set_60[[3]][[predictor_order-2]][[6]]) 
                                 names(test_data3) <- c("1st Day","2nd Day","3rd Day","Next Day")
-                                head(test_data3,10)
+                                tail(test_data3,10)
                                 
                                 
                         })
@@ -613,7 +613,7 @@ shinyServer(function(input, output, session) {
                                 predictor_order <- 8
                                 test_data4 <- denormalized(data_set_60[[4]][[predictor_order-2]][[2]],data_set_60[[4]][[predictor_order-2]][[6]]) 
                                 names(test_data4) <-  c("1st Day","2nd Day","3rd Day","4th Day","5th Day","6th Day","7th Day","8th Day","Next Day")
-                                head(test_data4,10)
+                                tail(test_data4,10)
                                 
                                 
                         })
@@ -621,7 +621,7 @@ shinyServer(function(input, output, session) {
                                 predictor_order <- 3
                                 test_data5 <- denormalized(data_set_60[[5]][[predictor_order-2]][[2]],data_set_60[[5]][[predictor_order-2]][[6]]) 
                                 names(test_data5) <-  c("1st Day","2nd Day","3rd Day","Next Day")
-                                head(test_data5,10)
+                                tail(test_data5,10)
                                 
                                 
                         })
@@ -630,7 +630,7 @@ shinyServer(function(input, output, session) {
                                 predictor_order <- 3
                                 test_data7 <- denormalized(data_set_60[[7]][[predictor_order-2]][[2]],data_set_60[[7]][[predictor_order-2]][[6]]) 
                                 names(test_data7) <- c("1st Day","2nd Day","3rd Day","Next Day")
-                                head(test_data7,10)
+                                tail(test_data7,10)
                                 
                                 
                         })
