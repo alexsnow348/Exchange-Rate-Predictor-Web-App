@@ -82,6 +82,46 @@ shinyServer(function(input, output, session) {
                 return(result)
         }) # End SGD MLP
         
+        test_rnn_sgd <- reactive({
+                predictor_order <- 3
+                
+                value1 <- as.numeric(input$sgd_homo_dayOne)
+                value2 <- as.numeric(input$sgd_homo_dayTwo)
+                value3 <- as.numeric(input$sgd_homo_dayThree)
+                
+                test <- cbind(value1,value2,value3)
+                normalized_test <-  (test-min(test))/(max(test)-min(test))
+                
+                test_input_array_1 <- list()
+                for (i in 1:predictor_order){
+                        input_day <- as.matrix(normalized_test[,i]) 
+                        test_input_array_1 <- c(test_input_array_1,input_day)
+                }
+                
+                test_input_array_1 <- as.numeric(test_input_array_1)
+                test_input_try <- array(test_input_array_1, dim=c(dim(input_day),predictor_order))
+                
+                test_result <- predictr(rnn_sgd, test_input_try )
+                predict_value <- denormalized(test_result,test)
+                result <- denormalized(predict_value,test)
+                return(result)
+        }) # End SGD RNN
+        
+        test_rbf_sgd <- reactive({
+                predictor_order <- 3
+                
+                value1 <- as.numeric(input$sgd_homo_dayOne)
+                value2 <- as.numeric(input$sgd_homo_dayTwo)
+                value3 <- as.numeric(input$sgd_homo_dayThree)
+                
+                test <- cbind(value1,value2,value3)
+                if(is.na(test[,1])){ return("NA")}
+                normalized_test <-  (test-min(test))/(max(test)-min(test))
+                result <- predict(rbf_sgd,normalized_test)
+                result <- denormalized(result,test)
+                return(result)
+        }) # End SGD RBF
+        
         test_homo_usd <- reactive({
                 predictor_order <- 9
                 
@@ -168,6 +208,59 @@ shinyServer(function(input, output, session) {
                 
         }) # End of USD MLP
         
+        test_rnn_usd <- reactive({
+                predictor_order <- 9
+                
+                value1 <- as.numeric(input$usd_homo_dayOne)
+                value2 <- as.numeric(input$usd_homo_dayTwo)
+                value3 <- as.numeric(input$usd_homo_dayThree)
+                value4 <- as.numeric(input$usd_homo_dayFour)
+                value5 <- as.numeric(input$usd_homo_dayFive)
+                value6 <- as.numeric(input$usd_homo_daySix)
+                value7 <- as.numeric(input$usd_homo_daySeven)
+                value8 <- as.numeric(input$usd_homo_dayEight)
+                value9 <- as.numeric(input$usd_homo_dayNine)
+                
+                test <- cbind(value1,value2,value3,value4,value5,value6,value7,value8,value9)
+                normalized_test <-  (test-min(test))/(max(test)-min(test))
+                
+                test_input_array_1 <- list()
+                for (i in 1:predictor_order){
+                        input_day <- as.matrix(normalized_test[,i]) 
+                        test_input_array_1 <- c(test_input_array_1,input_day)
+                }
+                
+                test_input_array_1 <- as.numeric(test_input_array_1)
+                test_input_try <- array(test_input_array_1, dim=c(dim(input_day),predictor_order))
+                
+                test_result <- predictr(rnn_usd, test_input_try )
+                predict_value <- denormalized(test_result,test)
+                result <- denormalized(predict_value,test)
+                
+                return(result)
+        }) # End USD RNN
+        
+        test_rbf_usd <- reactive({
+                
+                predictor_order <- 9
+                value1 <- as.numeric(input$usd_homo_dayOne)
+                value2 <- as.numeric(input$usd_homo_dayTwo)
+                value3 <- as.numeric(input$usd_homo_dayThree)
+                value4 <- as.numeric(input$usd_homo_dayFour)
+                value5 <- as.numeric(input$usd_homo_dayFive)
+                value6 <- as.numeric(input$usd_homo_daySix)
+                value7 <- as.numeric(input$usd_homo_daySeven)
+                value8 <- as.numeric(input$usd_homo_dayEight)
+                value9 <- as.numeric(input$usd_homo_dayNine)
+                
+                test <- cbind(value1,value2,value3,value4,value5,value6,value7,value8,value9)
+                if(is.na(test[,1])){ return("NA")}
+                normalized_test <-  (test-min(test))/(max(test)-min(test))
+                result <- predict(rbf_usd,normalized_test)
+                result <- denormalized(result,test)
+                return(result)
+        }) # End USD RBF
+        
         test_homo_gbp <- reactive({
                 
                 predictor_order <- 3
@@ -235,6 +328,46 @@ shinyServer(function(input, output, session) {
                 result <- denormalized(predicted_oneDayhead,test)
         }) # End of GBP MLP
         
+        test_rnn_gbp <- reactive({
+                predictor_order <- 3
+                value1 <- as.numeric(input$gbp_homo_dayOne)
+                value2 <- as.numeric(input$gbp_homo_dayTwo)
+                value3 <- as.numeric(input$gbp_homo_dayThree)
+                
+                test <- cbind(value1,value2,value3)
+                normalized_test <-  (test-min(test))/(max(test)-min(test))
+                
+                test_input_array_1 <- list()
+                for (i in 1:predictor_order){
+                        input_day <- as.matrix(normalized_test[,i]) 
+                        test_input_array_1 <- c(test_input_array_1,input_day)
+                }
+                
+                test_input_array_1 <- as.numeric(test_input_array_1)
+                test_input_try <- array(test_input_array_1, dim=c(dim(input_day),predictor_order))
+                
+                test_result <- predictr(rnn_gbp, test_input_try )
+                predict_value <- denormalized(test_result,test)
+                result <- denormalized(predict_value,test)
+                
+                return(result)
+        }) # End GBP RNN
+        
+        test_rbf_gbp <- reactive({
+                
+                predictor_order <- 3
+                value1 <- as.numeric(input$gbp_homo_dayOne)
+                value2 <- as.numeric(input$gbp_homo_dayTwo)
+                value3 <- as.numeric(input$gbp_homo_dayThree)
+                
+                test <- cbind(value1,value2,value3)
+                if(is.na(test[,1])){ return("NA")}
+                normalized_test <-  (test-min(test))/(max(test)-min(test))
+                result <- predict(rbf_gbp,normalized_test)
+                result <- denormalized(result,test)
+                return(result)
+        }) # End GBP RBF
+        
         test_homo_eur <- reactive({
                 
                 predictor_order <- 3
@@ -301,6 +434,46 @@ shinyServer(function(input, output, session) {
                 result <- denormalized(predicted_oneDayhead,test)
                 return(result) 
         }) # End od EURO MLP
+        
+        test_rnn_eur <- reactive({
+                predictor_order <- 3
+                value1 <- as.numeric(input$eur_homo_dayOne)
+                value2 <- as.numeric(input$eur_homo_dayTwo)
+                value3 <- as.numeric(input$eur_homo_dayThree)
+                
+                test <- cbind(value1,value2,value3)
+                normalized_test <-  (test-min(test))/(max(test)-min(test))
+                
+                test_input_array_1 <- list()
+                for (i in 1:predictor_order){
+                        input_day <- as.matrix(normalized_test[,i]) 
+                        test_input_array_1 <- c(test_input_array_1,input_day)
+                }
+                
+                test_input_array_1 <- as.numeric(test_input_array_1)
+                test_input_try <- array(test_input_array_1, dim=c(dim(input_day),predictor_order))
+                
+                test_result <- predictr(rnn_eur, test_input_try )
+                predict_value <- denormalized(test_result,test)
+                result <- denormalized(predict_value,test)
+                
+                return(result)
+        }) # End EURO RNN
+        
+        test_rbf_eur <- reactive({
+                
+                predictor_order <- 3
+                value1 <- as.numeric(input$eur_homo_dayOne)
+                value2 <- as.numeric(input$eur_homo_dayTwo)
+                value3 <- as.numeric(input$eur_homo_dayThree)
+                
+                test <- cbind(value1,value2,value3)
+                if(is.na(test[,1])){ return("NA")}
+                normalized_test <-  (test-min(test))/(max(test)-min(test))
+                result <- predict(rbf_eur,normalized_test)
+                result <- denormalized(result,test)
+                return(result)
+        }) # End EURO RBF
         
         test_homo_chf <- reactive({
                 predictor_order <- 9
@@ -389,6 +562,60 @@ shinyServer(function(input, output, session) {
                 
         }) # End of CHF MLP
         
+        test_rnn_chf <- reactive({
+                predictor_order <- 9
+                value1 <- as.numeric(input$chf_homo_dayOne)
+                value2 <- as.numeric(input$chf_homo_dayTwo)
+                value3 <- as.numeric(input$chf_homo_dayThree)
+                value4 <- as.numeric(input$chf_homo_dayFour)
+                value5 <- as.numeric(input$chf_homo_dayFive)
+                value6 <- as.numeric(input$chf_homo_daySix)
+                value7 <- as.numeric(input$chf_homo_daySeven)
+                value8 <- as.numeric(input$chf_homo_dayEight)
+                value9 <- as.numeric(input$chf_homo_dayNine)
+                
+                test <- cbind(value1,value2,value3,value4,value5,value6,value7,value8,value9)
+                normalized_test <-  (test-min(test))/(max(test)-min(test))
+                
+                test_input_array_1 <- list()
+                for (i in 1:predictor_order){
+                        input_day <- as.matrix(normalized_test[,i]) 
+                        test_input_array_1 <- c(test_input_array_1,input_day)
+                }
+                
+                test_input_array_1 <- as.numeric(test_input_array_1)
+                test_input_try <- array(test_input_array_1, dim=c(dim(input_day),predictor_order))
+                
+                test_result <- predictr(rnn_chf, test_input_try )
+                predict_value <- denormalized(test_result,test)
+                result <- denormalized(predict_value,test)
+                
+                return(result)
+        }) # End CHF  RNN
+        
+        test_rbf_chf <- reactive({
+                
+                predictor_order <- 9
+                
+                
+                value1 <- as.numeric(input$chf_homo_dayOne)
+                value2 <- as.numeric(input$chf_homo_dayTwo)
+                value3 <- as.numeric(input$chf_homo_dayThree)
+                value4 <- as.numeric(input$chf_homo_dayFour)
+                value5 <- as.numeric(input$chf_homo_dayFive)
+                value6 <- as.numeric(input$chf_homo_daySix)
+                value7 <- as.numeric(input$chf_homo_daySeven)
+                value8 <- as.numeric(input$chf_homo_dayEight)
+                value9 <- as.numeric(input$chf_homo_dayNine)
+                
+                test <- cbind(value1,value2,value3,value4,value5,value6,value7,value8,value9)
+                if(is.na(test[,1])){ return("NA")}
+                normalized_test <-  (test-min(test))/(max(test)-min(test))
+                result <- predict(rbf_chf,normalized_test)
+                result <- denormalized(result,test)
+                return(result)
+        }) # End CHF RBF
+        
         test_homo_aud <- reactive({
                 predictor_order <- 9
                 
@@ -473,6 +700,60 @@ shinyServer(function(input, output, session) {
                 
         }) # End of AUD MLP
         
+        test_rnn_aud <- reactive({
+                predictor_order <- 9
+                value1 <- as.numeric(input$aud_homo_dayOne)
+                value2 <- as.numeric(input$aud_homo_dayTwo)
+                value3 <- as.numeric(input$aud_homo_dayThree)
+                value4 <- as.numeric(input$aud_homo_dayFour)
+                value5 <- as.numeric(input$aud_homo_dayFive)
+                value6 <- as.numeric(input$aud_homo_daySix)
+                value7 <- as.numeric(input$aud_homo_daySeven)
+                value8 <- as.numeric(input$aud_homo_dayEight)
+                value9 <- as.numeric(input$aud_homo_dayNine)
+                
+                test <- cbind(value1,value2,value3,value4,value5,value6,value7,value8,value9)
+                normalized_test <-  (test-min(test))/(max(test)-min(test))
+                
+                test_input_array_1 <- list()
+                for (i in 1:predictor_order){
+                        input_day <- as.matrix(normalized_test[,i]) 
+                        test_input_array_1 <- c(test_input_array_1,input_day)
+                }
+                
+                test_input_array_1 <- as.numeric(test_input_array_1)
+                test_input_try <- array(test_input_array_1, dim=c(dim(input_day),predictor_order))
+                
+                test_result <- predictr(rnn_aud, test_input_try )
+                predict_value <- denormalized(test_result,test)
+                result <- denormalized(predict_value,test)
+                
+                return(result)
+        }) # End AUD  RNN
+        
+        test_rbf_aud <- reactive({
+                
+                predictor_order <- 9
+                
+                
+                value1 <- as.numeric(input$aud_homo_dayOne)
+                value2 <- as.numeric(input$aud_homo_dayTwo)
+                value3 <- as.numeric(input$aud_homo_dayThree)
+                value4 <- as.numeric(input$aud_homo_dayFour)
+                value5 <- as.numeric(input$aud_homo_dayFive)
+                value6 <- as.numeric(input$aud_homo_daySix)
+                value7 <- as.numeric(input$aud_homo_daySeven)
+                value8 <- as.numeric(input$aud_homo_dayEight)
+                value9 <- as.numeric(input$aud_homo_dayNine)
+                
+                test <- cbind(value1,value2,value3,value4,value5,value6,value7,value8,value9)
+                if(is.na(test[,1])){ return("NA")}
+                normalized_test <-  (test-min(test))/(max(test)-min(test))
+                result <- predict(rbf_aud,normalized_test)
+                result <- denormalized(result,test)
+                return(result)
+        }) # End CHF RBF
+        
         result <- observe({
                 # USD HOMO
                 if(input$currency=="USD" && input$model=="HOMO"){
@@ -482,10 +763,24 @@ shinyServer(function(input, output, session) {
                         })
                        
                 }
-                # SGD MLP
+                # USD MLP
                 if(input$currency=="USD" && input$model=="MLP"){
                         output$result1 <- renderText({
                                 test_mlp_usd()
+                        }) 
+                        
+                }
+                #USD RNN
+                if(input$currency=="USD" && input$model=="RNN"){
+                        output$result1 <- renderText({
+                                test_rnn_usd()
+                        }) 
+                        
+                }
+                #USD RBF
+                if(input$currency=="USD" && input$model=="RBF"){
+                        output$result1 <- renderText({
+                                test_rbf_usd()
                         }) 
                         
                 }
@@ -521,11 +816,24 @@ shinyServer(function(input, output, session) {
                         }) 
                        
                 }
-                
                 # SGD MLP
                 if(input$currency=="SGD" && input$model=="MLP"){
                         output$result1 <- renderText({
                                 test_mlp_sgd()
+                        }) 
+                        
+                }
+                # SGD RNN
+                if(input$currency=="SGD" && input$model=="RNN"){
+                        output$result1 <- renderText({
+                                test_rnn_sgd()
+                        }) 
+                        
+                }
+                # SGD RBF
+                if(input$currency=="SGD" && input$model=="RBF"){
+                        output$result1 <- renderText({
+                                test_rbf_sgd()
                         }) 
                         
                 }
@@ -558,6 +866,22 @@ shinyServer(function(input, output, session) {
                 if(input$currency=="GBP" && input$model=="MLP"){
                         output$result1 <- renderText({
                                 test_mlp_gbp()
+                        }) 
+                        
+                }
+                
+                # GBP MLP
+                if(input$currency=="GBP" && input$model=="RNN"){
+                        output$result1 <- renderText({
+                                test_rnn_gbp()
+                        }) 
+                        
+                }
+                
+                # GBP RBF
+                if(input$currency=="GBP" && input$model=="RBF"){
+                        output$result1 <- renderText({
+                                test_rbf_gbp()
                         }) 
                         
                 }
@@ -595,6 +919,23 @@ shinyServer(function(input, output, session) {
                         
                 }
                 
+                # EURO RNN
+                if(input$currency=="EURO" && input$model=="RNN"){
+                        output$result1 <- renderText({
+                                test_rnn_eur()
+                        }) 
+                        
+                }
+                
+                # EURO RBF
+                if(input$currency=="EURO" && input$model=="RBF"){
+                        output$result1 <- renderText({
+                                test_rbf_eur()
+                        }) 
+                        
+                }
+                
+                
                 updateTextInput(session, "eur_homo_dayOne", value = "")
                 updateTextInput(session, "eur_homo_dayTwo", value = "")
                 updateTextInput(session, "eur_homo_dayThree", value = "")
@@ -619,12 +960,28 @@ shinyServer(function(input, output, session) {
                         })
                         
                 }
-                
                 # CHF MLP
                 if(input$currency=="CHF" && input$model=="MLP"){
                         
                         output$result1 <- renderText({
                                 test_mlp_chf()
+                        })
+                        
+                }
+                # CHF RNN
+                if(input$currency=="CHF" && input$model=="RNN"){
+                        
+                        output$result1 <- renderText({
+                                test_rnn_chf()
+                        })
+                        
+                }
+                
+                # CHF RBF
+                if(input$currency=="CHF" && input$model=="RBF"){
+                        
+                        output$result1 <- renderText({
+                                test_rbf_chf()
                         })
                         
                 }
@@ -671,6 +1028,24 @@ shinyServer(function(input, output, session) {
                         
                         output$result1 <- renderText({
                                 test_mlp_aud()
+                        })
+                        
+                }
+                
+                # AUD RNN
+                if(input$currency=="AUD" && input$model=="RNN"){
+                        
+                        output$result1 <- renderText({
+                                test_rnn_aud()
+                        })
+                        
+                }
+                
+                # AUD RBF
+                if(input$currency=="AUD" && input$model=="RBF"){
+                        
+                        output$result1 <- renderText({
+                                test_rbf_aud()
                         })
                         
                 }
@@ -755,7 +1130,7 @@ shinyServer(function(input, output, session) {
                         
                 })
                 
-        } # HOMO DATASEt
+        } # HOMO DATASET
         if(input$model == "HETRO"){
                         output$test_data1 <- renderDataTable({
                                 predictor_order <- 3
@@ -807,7 +1182,8 @@ shinyServer(function(input, output, session) {
                                 
                         })
                         
-                } # HETERO DATASEt
+                } # HETERO DATASET
+                
 }) # End of Test Data 
         
         session$onSessionEnded(function() {
