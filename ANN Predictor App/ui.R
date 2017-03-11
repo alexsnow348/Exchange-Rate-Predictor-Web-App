@@ -350,7 +350,17 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                                      
                                      
                               )
-                )
+                ),
+                tags$script(HTML("<script>
+                                  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                                  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                                  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+                                
+                                  ga('create', 'UA-92247697-1', 'auto');
+                                  ga('send', 'pageview');
+                                
+                                </script>"))
  ),
              
              tabPanel("Project Description",
@@ -359,7 +369,7 @@ shinyUI(fluidPage(theme = "bootstrap.css",
                               column(12,
                                      tags$h3("For now, Please visit the presentation slide of the project."),
                                     tags$a(href="https://docs.google.com/presentation/d/1m9pZClslKSyQQ-nwjuojCsFIyv21bJ6UiRBnUwra83w/edit?usp=sharing", 
-                                           tags$strong("Here!"))
+                                           tags$strong("Here!"),target="_blank")
                                    
                       ))),
 tabPanel("How to Use",
